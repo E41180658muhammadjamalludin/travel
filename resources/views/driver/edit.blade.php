@@ -9,53 +9,42 @@
 }
 </style>
 <!---------------- FORM TABLE ---------------->
-<form action="{{url('user/proses')}}" method="post" class="form-table">
+<form action="{{url('car/update')}}" method="post" class="form-table">
   {{ csrf_field() }}
         <!------- judul ------->
         <div class="title">
-            <label for="">buat user</label>
+            <label for="">Edit mobil</label>
         </div>
+        @foreach($car as $data)
         <div class="forminput">
-            <label for="">nama</label>
-            @error('nama')
+            <label for="">plat_nomor</label>
+            @error('plat_nomor')
             <p style="color: red">
               {{ $message }}
             </p>
             @enderror
-            <input type="text" name="nama" placeholder="nama">
+            <input type="text" value="{{$data->plat_nomor}}" name="plat_nomor" placeholder="plat_nomor">
         </div>
         <div class="forminput">
-            <label for="">email</label>
-            @error('email')
+            <label for="">merek</label>
+            @error('merek')
             <p style="color: red">
               {{ $message }}
             </p>
             @enderror
-            <input type="email" name="email" placeholder="email">
+            <input type="text" value="{{$data->merek}}" name="merek" placeholder="merek">
         </div>
         <div class="forminput">
-            <label for="">password</label>
-            @error('password')
+            <label for="">type</label>
+            @error('type')
             <p style="color: red">
               {{ $message }}
             </p>
             @enderror
-            <input type="password" name="password" placeholder="password">
+            <input type="text" value="{{$data->type}}" name="type" placeholder="type">
+            <input type="hidden" value="{{$data->id}}" name="id" value="">
         </div>
-        <div class="forminput">
-            <label for="">Hak akses</label>
-            @error('akses')
-            <p style="color: red">
-              {{ $message }}
-            </p>
-            @enderror
-            <select class="" name="akses">
-              <option value="">Dipilih</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-            </select>
-        </div>
-
+      @endforeach
     <div class="form-button">
             <button class="button green">save</button>
             <a href="{{url('/profile')}}" class="button red">kembali</a>

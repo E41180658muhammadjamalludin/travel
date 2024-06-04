@@ -8,6 +8,7 @@
     <title>Jabatan</title>
 </head>
 <body>
+@include('sweetalert::alert')
 <!-- navbar -->
     <nav id="navbar" class="nav">
         <div class="logo">

@@ -23,7 +23,7 @@
               {{ $message }}
             </p>
             @enderror
-            <input type="text" name="nama" value="{{$s->nama}}" placeholder="nama">
+            <input type="text" name="nama" value="{{$s->name}}" placeholder="nama">
         </div>
         <div class="forminput">
             <label for="">email</label>
@@ -35,13 +35,13 @@
             <input type="email" name="email" value="{{$s->email}}" placeholder="email">
         </div>
         <div class="forminput">
-            <label for="">password</label>
+            <label for="">password <p style="color: red">(Kosongkan jika tidak diubah kata sandi)</p> </label>
             @error('password')
             <p style="color: red">
               {{ $message }}
             </p>
             @enderror
-            <input type="password" name="password" value="{{$s->password}}" placeholder="password">
+            <input type="password" name="password" value="" placeholder="password">
         </div>
         <div class="forminput">
             <label for="">Hak akses</label>
@@ -50,7 +50,11 @@
               {{ $message }}
             </p>
             @enderror
-            <input type="text" name="akses" value="{{$s->level}}" placeholder="akses">
+            <select class="" name="akses">
+              <option value="">Dipilih</option>
+              <option @if ($s->level == '1') selected @endif value="1">1</option>
+              <option @if ($s->level == '2') selected @endif value="2">2</option>
+            </select>
 						<input type="hidden" value="{{$s->id}}" name="id">
         </div>
 		@endforeach
